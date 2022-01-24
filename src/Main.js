@@ -6,12 +6,19 @@ export default function Main() {
   function addTask() {
     setTaskList([...taskList, taskName]);
   }
-  const taskListContent = taskList.map((task) => {
+
+  function deleteTask(index) {
+    // alert(index);
+    let duparray = [...taskList];
+    duparray.splice(index, 1);
+    setTaskList(duparray);
+  }
+
+  const taskListContent = taskList.map((task, index) => {
     return (
       <div>
         <p>{task}</p>
-
-        <i className="far fa-trash-alt"></i>
+        <i className="far fa-trash-alt" onClick={() => deleteTask(index)}></i>
       </div>
     );
   });
